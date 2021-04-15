@@ -5,6 +5,12 @@ cd tpcc
 ant bootstrap
 ant resolve
 ant build
-./tpccbenchmark -c config/workload_all.xml --create=true --load=true
+
 ./tpccbenchmark -c config/workload_all.xml --clear=true
+./tpccbenchmark -c config/workload_all.xml --create=true --warehouses=1
+./tpccbenchmark -c config/workload_all.xml --load=true --loaderthreads=1
+
+
+./tpccbenchmark -c config/workload_short.xml --execute=true --nodes=yb-1,yb-2,yb3 --warehouses=1 --num-connections=6 -s 5 -o tt
+
 ./tpccbenchmark -c config/workload_all.xml --execute=true -s 5 -o outputfile
